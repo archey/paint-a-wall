@@ -16,7 +16,8 @@ fn main() {
     //let _amount_of_paint: f64; // 64bit floating point type
     //let _cost_of_paint: u64; // 64bit unsigned integer 8 byte
     //let _amount_of_time: f64; // 64bit floating point type
-    const COST_PER_GALLON: u8 = 27; // 8 bit unsigned integer type
+    const COST_PER_GALLON: f64 = 27.0; // 64 bit floasting point type
+    const COST_PER_HOUR: f64 = 100.0; // 64 bit floating point type
     const SQFT_PER_GALLON: f64 = 350.0; // 64bit floating point type
 
     print!("Enter the width of the wall in feet: ");
@@ -49,8 +50,8 @@ fn main() {
              cost_of_paint(amount_of_paint(area(width, height), SQFT_PER_GALLON), COST_PER_GALLON));
 
     // Output the amount of time needed to paint in hours
-    println!("Total time to paint in hours: {:.1}",
-             amount_of_time(area(width, height), 100.0));
+    println!("Total time to paint in hours: {:.2}",
+             amount_of_time(area(width, height), COST_PER_HOUR));
 }
 
 // Calculate the area of the room
@@ -59,16 +60,16 @@ fn area(w: f64, h: f64) -> f64 {
 }
 
 // Calculate the amount of paint needed
-fn amount_of_paint(area: f64, sqft: f64) -> u8 {
+fn amount_of_paint(area: f64, sqft: f64) -> f64 {
     // round up to the first decimal place
     // ceil(value, scale)
     // TODO Typecasting to unsigned 8bit to remove decimal point, need to FIX
-    return round::ceil(area / sqft, 1) as u8
+    return round::ceil(area / sqft, 0)
 }
 
 // Calculate the cost of the paint
-fn cost_of_paint(amount: u8, cost: u8) -> u8 {
-    amount * cost
+fn cost_of_paint(amount: f64, cost: f64) -> f64 {
+    return round::ceil(amount * cost, 0)
 }
 
 // Calculate the amount of time it will take to paint a room
