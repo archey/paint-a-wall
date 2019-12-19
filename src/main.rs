@@ -64,12 +64,12 @@ fn amount_of_paint(area: f64, sqft: f64) -> f64 {
     // round up to the first decimal place
     // ceil(value, scale)
     // TODO Typecasting to unsigned 8bit to remove decimal point, need to FIX
-    return round::ceil(area / sqft, 0)
+    round::ceil(area / sqft, 0)
 }
 
 // Calculate the cost of the paint
 fn cost_of_paint(amount: f64, cost: f64) -> f64 {
-    return round::ceil(amount * cost, 0)
+    round::ceil(amount * cost, 0)
 }
 
 // Calculate the amount of time it will take to paint a room
